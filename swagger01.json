@@ -1,0 +1,103 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "swagger01",
+        "description": "Swagger de ejemplo",
+        "version": "1.0.0"
+    },
+    "host": "127.0.0.1",
+    "schemes": [
+        "https"
+    ],
+    "basePath": "/api",
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/v1/channels/crp/branch-portfolio/executive-portfolio/units/performance": {
+            "post": {
+                "tags": [
+                    "executive-portfolio-units-performance"
+                ],
+                "operationId": "executive-portfolio-units-performance",
+                "summary": "This api shalala",
+                "description": "Retrieves something",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [{
+                        "name": "clientId",
+                        "in": "header",
+                        "required": true,
+                        "type": "string",
+                        "description": "Cliente Id"
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true,
+                        "type": "string",
+                        "description": "La autorizacion"
+                    },
+                    {
+                        "name": "portfolioRequest",
+                        "in": "body",
+                        "schema": {
+                            "$ref": "#/definitions/portfolioRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Operation",
+                        "schema": {
+                            "$ref": "#/definitions/PortfolioResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "<Table><tr><td>Type</td><td>Code</td></tr></Table>",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    }
+                }
+
+            }
+        }
+    },
+    "definitions": {
+        "portfolioRequest": {
+            "type": "object",
+            "properties": {
+                "divisionCode": {
+                    "description": "Division del codigo",
+                    "type": "string",
+                    "example": "7383",
+                    "maxLength": 32
+                }
+            }
+        },
+        "PortfolioResponse": {
+            "type": "object",
+            "properties": {
+                "divisionCode": {
+                    "description": "Division del codigo",
+                    "type": "string",
+                    "example": "7383",
+                    "maxLength": 32
+                }
+            }
+        },
+        "ErrorResponse": {
+            "properties": {
+                "type": {
+                    "description": "Invalid",
+                    "type": "string",
+                }
+            }
+        }
+    }
+}
